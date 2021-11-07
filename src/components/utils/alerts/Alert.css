@@ -1,0 +1,28 @@
+.alert {
+  text-align: center;
+  margin-top: var(--spacing-300);
+}
+
+.alert.success {
+  --alert-color: var(--clr-accent-green-400);
+}
+
+.alert.error {
+  --alert-color: var(--clr-accent-red-400);
+}
+
+.alert__checkmark {
+  display: grid;
+  place-content: center;
+  background-color: var(--alert-color);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: var(--font-sz-700);
+  color: var(--clr-white);
+  margin: 0 auto;
+}
+
+.alert__text {
+  color: var(--alert-color);
+}

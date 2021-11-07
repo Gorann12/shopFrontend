@@ -1,0 +1,10 @@
+.form-control {
+  margin-bottom: var(--spacing-400);
+}
+
+.form-control label {
+  display: block;
+  font-size: var(--font-sz-200);
+  font-weight: 700;
+  color: var(--clr-primary-700);
+}

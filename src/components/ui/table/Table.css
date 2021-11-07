@@ -1,0 +1,38 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-separate {
+  margin: var(--spacing-400) 0;
+}
+
+.table tr {
+  background-color: var(--clr-white);
+  height: 5rem;
+}
+
+.table tr:hover {
+  background-color: var(--clr-grey-200);
+}
+
+.table td {
+  padding: var(--spacing-200);
+  color: var(--clr-grey-600);
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table td:last-child {
+  text-align: right;
+}
+
+.table td:first-child {
+  font-weight: bold;
+  color: var(--clr-primary-700);
+  text-align: left;
+}
+
+.table tr:not(:last-child) {
+  border-bottom: 2px solid var(--clr-grey-100);
+}

@@ -1,0 +1,8 @@
+.flag {
+  font-size: var(--font-sz-200);
+  color: var(--clr-accent-yellow-500);
+  background-color: var(--clr-accent-yellow-200);
+  font-weight: 700;
+  padding: var(--spacing-100) var(--spacing-200);
+  border-radius: 50rem;
+}

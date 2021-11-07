@@ -1,0 +1,15 @@
+.empty-state {
+  text-align: center;
+  margin-top: var(--spacing-700);
+}
+
+.empty-state__img {
+  width: 50%;
+  margin-bottom: var(--spacing-400);
+}
+
+.empty-state__message {
+}
+
+.empty-state__link {
+}

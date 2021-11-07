@@ -1,0 +1,23 @@
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.center {
+  align-items: center;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-separate {
+  margin-top: var(--spacing-500);
+}
+
+.flex-gap-small {
+  gap: var(--spacing-200);
+}

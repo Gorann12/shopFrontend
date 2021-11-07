@@ -1,0 +1,23 @@
+.button-primary {
+  font-size: var(--font-sz-500);
+  font-weight: 700;
+  background-color: var(--clr-primary-400);
+  color: var(--clr-white);
+  padding: var(--spacing-100) var(--spacing-500);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background-color: var(--clr-primary-500);
+}
+
+.button-center {
+  display: block;
+  margin: 0 auto;
+}
+
+.button-separate {
+  margin-top: var(--spacing-500);
+  margin-bottom: var(--spacing-500);
+}

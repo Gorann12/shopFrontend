@@ -1,0 +1,23 @@
+.header.separate {
+  margin-top: var(--spacing-400);
+  margin-bottom: var(--spacing-300);
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.header h1 {
+  font-size: var(--font-sz-800);
+  font-weight: 400;
+  color: var(--clr-primary-600);
+}
+
+.header p {
+  font-size: var(--font-sz-400);
+  color: var(--clr-grey-600);
+}
