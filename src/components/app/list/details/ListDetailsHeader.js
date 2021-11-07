@@ -1,16 +1,17 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../../ui/header/Header";
 import PrimaryButton from "../../../ui/buttons/PrimaryButton";
 import Flex from "../../../ui/Flex";
 
 const ListDetailsHeader = ({ list }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const navigateToManageItemsPage = () => {
-    history.push({
-      pathname: `/lists/${list._id}/manage-items`,
-      state: list,
-    });
+    navigate(`/lists/${list._id}/manage-items`, { state: list });
+    // history.push({
+    //   pathname: `/lists/${list._id}/manage-items`,
+    //   state: list,
+    // });
   };
 
   return (

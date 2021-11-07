@@ -1,21 +1,22 @@
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import Flag from "../../../ui/Flag";
 import Flex from "../../../ui/Flex";
 import EditIconButton from "../../../ui/buttons/EditIconButton";
 import DeleteIconButton from "../../../ui/buttons/DeleteIconButton";
 
 const ItemListElement = ({ item, onDelete }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const deleteHandler = () => {
     onDelete(item._id);
   };
 
   const navigateToUpdatePage = () => {
-    history.push({
-      pathname: `/items/${item._id}/update`,
-      state: item,
-    });
+    navigate(`/items/${item._id}/update`, { state: item });
+    // history.push({
+    //   pathname: `/items/${item._id}/update`,
+    //   state: item,
+    // });
   };
 
   return (

@@ -1,0 +1,5 @@
+.button-secondary {
+  cursor: pointer;
+  color: var(--clr-primary-400);
+  font-size: var(--font-sz-200);
+}

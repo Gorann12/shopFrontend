@@ -8,12 +8,7 @@ const Dropdown = ({ title, options, baseUrl }) => {
       <ul className="dropdown__list">
         {options.map((option, index) => (
           <li className="dropdown__item" key={index}>
-            <NavLink
-              exact={true}
-              activeClassName="dropdown__active"
-              className="dropdown__link"
-              to={baseUrl + option.endpoint}
-            >
+            <NavLink className="dropdown__link" to={baseUrl + option.endpoint}>
               {option.description}
             </NavLink>
           </li>

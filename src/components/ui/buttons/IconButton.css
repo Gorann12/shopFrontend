@@ -1,9 +1,11 @@
 .icon-button.icon-button__edit {
   background-color: var(--clr-primary-100);
+  color: var(--clr-primary-600);
 }
 
 .icon-button.icon-button__delete {
   background-color: var(--clr-accent-red-100);
+  color: var(--clr-accent-red-600);
 }
 
 .icon-button {

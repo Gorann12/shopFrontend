@@ -42,7 +42,7 @@
   transform-origin: top left;
 }
 
-.dropdown__list .dropdown__item.dropdown__active {
+.dropdown__list .dropdown__item.active {
   background: red;
 }
 
@@ -54,7 +54,7 @@
   font-weight: 600;
 }
 
-.dropdown__link.dropdown__active {
+.dropdown__link.active {
   background-color: var(--clr-primary-100);
 }
 

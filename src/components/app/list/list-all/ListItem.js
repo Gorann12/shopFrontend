@@ -1,11 +1,11 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Flex from "../../../ui/Flex";
 import Flag from "../../../ui/Flag";
 import EditIconButton from "../../../ui/buttons/EditIconButton";
 import DeleteIconButton from "../../../ui/buttons/DeleteIconButton";
 
 const ListItem = ({ list, onDelete }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const deleteHandler = (evt) => {
     evt.stopPropagation();
@@ -17,16 +17,18 @@ const ListItem = ({ list, onDelete }) => {
   const navigateToUpdatePage = (evt) => {
     evt.stopPropagation();
 
-    history.push({
-      pathname: `/lists/${list._id}/update`,
-      state: list,
-    });
+    navigate(`/lists/${list._id}/update`, { state: list });
+    // history.push({
+    //   pathname: `/lists/${list._id}/update`,
+    //   state: list,
+    // });
   };
 
   const navigateToListDetailsPage = (evt) => {
     evt.stopPropagation();
 
-    history.push(`/lists/${list._id}`);
+    navigate(`/lists/${list._id}`);
+    // history.push(`/lists/${list._id}`);
   };
 
   return (

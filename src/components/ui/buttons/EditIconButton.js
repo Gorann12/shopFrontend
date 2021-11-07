@@ -8,7 +8,7 @@ const EditIconButton = ({ onClick = () => {} }) => {
       aria-label="Edit"
       className="icon-button icon-button__edit"
     >
-      <FaEdit style={{ color: "#19466e" }} />
+      <FaEdit />
     </button>
   );
 };

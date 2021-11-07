@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import UpdateItemHeader from "./UpdateItemHeader";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ItemForm from "../shared/ItemForm";
 import EmptyState from "../../../utils/EmptyState";
-import { useHistory } from "react-router-dom";
 
-const UpdateItemPage = ({ location }) => {
+const UpdateItemPage = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const history = useHistory();
+  const navigate = useNavigate();
+  const location = useLocation();
   const item = location.state;
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const UpdateItemPage = ({ location }) => {
       setIsLoading(true);
       await axios.patch(`/api/items/${item._id}`, newItem);
 
-      history.push("/items/");
+      navigate("/items/");
     } catch (err) {
       alert(err.response.data.message);
     }
