@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import CreateCategoryPage from "../app/category/create/CreateCategoryPage";
 import CategoryListPage from "../app/category/list/CategoryListPage";
 import ShopListPage from "../app/shop/list/ShopListPage";
@@ -11,10 +11,13 @@ import ListDetailsPage from "../app/list/details/ListDetailsPage";
 import ListsPage from "../app/list/list-all/ListsPage";
 import UpdateListPage from "../app/list/update/UpdateListPage";
 import ManageItemsPage from "../app/list/manage-items/ManageItemsPage";
+import InvalidRoute from "../utils/InvalidRoute";
 
 const AllRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/categories" />} />
+
       {/* Categories */}
       <Route path="/categories" element={<CategoryListPage />} />
       <Route path="/categories/create" element={<CreateCategoryPage />} />
@@ -34,6 +37,8 @@ const AllRoutes = () => {
       <Route path="/lists/:id" element={<ListDetailsPage />} />
       <Route path="/lists/:id/update" element={<UpdateListPage />} />
       <Route path="/lists/:id/manage-items" element={<ManageItemsPage />} />
+
+      <Route path="*" element={<InvalidRoute />} />
     </Routes>
   );
 };

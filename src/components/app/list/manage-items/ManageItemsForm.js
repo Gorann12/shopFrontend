@@ -17,7 +17,7 @@ const ManageItemsForm = ({ items, list, onSubmit }) => {
   }, []);
 
   const isItemInList = (itemId) => {
-    return selectedItems[itemId] !== undefined;
+    return itemId in selectedItems;
   };
 
   const submitHandler = (evt) => {

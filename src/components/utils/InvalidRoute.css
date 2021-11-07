@@ -1,0 +1,14 @@
+.invalid-route__img {
+  width: 100%;
+  margin: var(--spacing-600) 0;
+}
+
+.invalid-route__description {
+  text-align: center;
+}
+
+.invalid-route__text {
+  display: block;
+  font-size: var(--font-sz-700);
+  color: var(--clr-grey-700);
+}

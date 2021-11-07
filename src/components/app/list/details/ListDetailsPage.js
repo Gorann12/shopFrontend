@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ListDetailsHeader from "./ListDetailsHeader";
@@ -10,6 +10,7 @@ const ListDetailsPage = () => {
   const [list, setList] = useState({ items: [], _id: "" });
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchList = async () => {
@@ -17,6 +18,7 @@ const ListDetailsPage = () => {
         const response = await axios.get(`/api/lists/${id}`);
         setList(response.data);
       } catch (err) {
+        navigate("*");
         console.log(err.message);
       } finally {
         setIsLoading(false);
