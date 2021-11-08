@@ -31,6 +31,7 @@ const ManageItemsPage = () => {
     };
 
     fetchItems();
+    return () => setIsLoading(false);
   }, []);
 
   const submitHandler = async (selectedItems) => {
@@ -48,9 +49,9 @@ const ManageItemsPage = () => {
   return (
     <>
       {/* If user types url directly redirect him back to list details */}
-      {!list && <Navigate to={`/lists/${id}`} />}
       {isLoading && <LoadingSpinner />}
-      {!isLoading && (
+      {!isLoading && !list && <Navigate to={`/lists/${id}`} />}
+      {!isLoading && list && (
         <>
           <ManageItemsHeader listName={list.name} />
           <ManageItemsForm onSubmit={submitHandler} items={items} list={list} />

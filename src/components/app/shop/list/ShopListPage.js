@@ -20,6 +20,8 @@ const ShopListPage = () => {
       }
     };
     fetchShops();
+
+    return () => setIsLoading(false);
   }, []);
 
   return (

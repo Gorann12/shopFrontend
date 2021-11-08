@@ -20,6 +20,8 @@ const ListCategoryPage = () => {
       }
     };
     fetchCategories();
+
+    return () => setIsLoading(false);
   }, []);
 
   return (
