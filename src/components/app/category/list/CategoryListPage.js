@@ -4,7 +4,7 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import CategoryListHeader from "./CategoryListHeader";
 import CategoryList from "./CategoryList";
 
-const ListCategoryPage = () => {
+const CategoryListPage = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,4 +36,4 @@ const ListCategoryPage = () => {
   );
 };
 
-export default ListCategoryPage;
+export default CategoryListPage;

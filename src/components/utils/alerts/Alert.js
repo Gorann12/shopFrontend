@@ -8,7 +8,7 @@ const Alert = ({ message, onDissapear, success }) => {
     }, 3000);
   });
   return (
-    <div className={`alert ${success ? "success" : "error"}`}>
+    <div className={`alert ${success ? "success" : "error"}`} role="alert">
       {/* String.fromCharCode will create checkmark (10003) or X (10005) html entity */}
       <div className="alert__checkmark">
         {String.fromCharCode(success ? 10003 : 10005)}

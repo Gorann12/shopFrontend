@@ -1,6 +1,6 @@
 import Header from "../../../ui/header/Header";
 
-const ListCategoriesHeader = () => {
+const CategoryListHeader = () => {
   return (
     <Header textAlign="left" separate={true}>
       <h1>See All Categories</h1>
@@ -8,4 +8,4 @@ const ListCategoriesHeader = () => {
   );
 };
 
-export default ListCategoriesHeader;
+export default CategoryListHeader;
