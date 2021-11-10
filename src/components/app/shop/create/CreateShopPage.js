@@ -5,13 +5,11 @@ import CreateShopForm from "./CreateShopForm";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import Alert from "../../../utils/alerts/Alert";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const CreateShopPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
   const [alert, setAlert] = useState({ message: "", success: false });
+  const source = axios.CancelToken.source();
 
   // To Prevent Memory Leaks when component unmounts
   useEffect(() => {

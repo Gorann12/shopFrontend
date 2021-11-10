@@ -10,9 +10,6 @@ import ManageItemsHeader from "./ManageItemsHeader";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ManageItemsForm from "./ManageItemsForm";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const ManageItemsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState([]);
@@ -20,6 +17,7 @@ const ManageItemsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const list = location.state;
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchItems = async () => {

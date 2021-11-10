@@ -6,14 +6,12 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import EmptyState from "../../../utils/EmptyState";
 import Alert from "../../../utils/alerts/Alert";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const CreateListPage = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAlertShown, setIsAlertShown] = useState(false);
   const [alert, setAlert] = useState({ message: "", success: false });
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchShops = async () => {

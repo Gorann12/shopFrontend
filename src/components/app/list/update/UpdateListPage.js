@@ -6,15 +6,13 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ListForm from "../shared/ListForm";
 import EmptyState from "../../../utils/EmptyState";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const UpdateListPage = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const list = location.state;
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchShops = async () => {

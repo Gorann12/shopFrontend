@@ -6,14 +6,12 @@ import ListDetailsHeader from "./ListDetailsHeader";
 import EmptyState from "../../../utils/EmptyState";
 import ListDetailsItemList from "./ListDetailsItemList";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const ListDetailsPage = () => {
   const [list, setList] = useState({ items: [], _id: "" });
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchList = async () => {

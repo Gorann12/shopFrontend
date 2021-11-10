@@ -4,13 +4,12 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import FilterHeader from "../../shared/FilterHeader";
 import List from "./List";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const ListsPage = () => {
   const [lists, setLists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedShop, setSelectedShop] = useState("");
+  const source = axios.CancelToken.source();
+
   useEffect(() => {
     const fetchLists = async () => {
       try {

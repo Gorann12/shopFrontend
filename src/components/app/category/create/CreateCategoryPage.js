@@ -5,13 +5,11 @@ import CreateCategoryForm from "./CreateCategoryForm";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import Alert from "../../../utils/alerts/Alert";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const CreateCategoryPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
   const [alert, setAlert] = useState({ message: "", success: false });
+  const source = axios.CancelToken.source();
 
   // To Prevent Memory Leaks when component unmounts, unfinished request will be canceled
   // and alert timeout will be stopped

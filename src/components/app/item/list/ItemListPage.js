@@ -4,13 +4,11 @@ import FilterHeader from "../../shared/FilterHeader";
 import ItemList from "./ItemList";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const ItemListPage = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchItems = async () => {

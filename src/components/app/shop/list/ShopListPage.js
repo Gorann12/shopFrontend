@@ -4,12 +4,10 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ShopList from "./ShopList";
 import ShopListHeader from "./ShopListHeader";
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 const ShopListPage = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchShops = async () => {
