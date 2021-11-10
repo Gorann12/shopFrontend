@@ -12,7 +12,6 @@ const ManageItemsHeader = ({ listName = "" }) => {
   };
 
   return (
-    // If listName prop isn't provided we will output: Manage items
     <Header separate={true}>
       <SecondaryButton onClick={navigateBack}>
         <Flex alignItems="center" gap={true}>

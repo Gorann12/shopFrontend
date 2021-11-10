@@ -10,6 +10,9 @@ import ManageItemsHeader from "./ManageItemsHeader";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ManageItemsForm from "./ManageItemsForm";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const ManageItemsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState([]);
@@ -21,7 +24,9 @@ const ManageItemsPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get("/api/items");
+        const response = await axios.get("/api/items", {
+          cancelToken: source.token,
+        });
         setItems(response.data);
       } catch (err) {
         alert(err.response.data.message);
@@ -31,14 +36,16 @@ const ManageItemsPage = () => {
     };
 
     fetchItems();
-    return () => setIsLoading(false);
+    return () => source.cancel();
   }, []);
 
   const submitHandler = async (selectedItems) => {
     setIsLoading(true);
 
     try {
-      await axios.patch(`/api/lists/${list._id}`, selectedItems);
+      await axios.patch(`/api/lists/${list._id}`, selectedItems, {
+        cancelToken: source.token,
+      });
       navigate(`/lists/${list._id}`);
     } catch (err) {
       alert(err.response.data.message);

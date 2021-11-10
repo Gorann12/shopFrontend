@@ -4,6 +4,9 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import CategoryListHeader from "./CategoryListHeader";
 import CategoryList from "./CategoryList";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const CategoryListPage = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +14,9 @@ const CategoryListPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("/api/categories");
+        const response = await axios.get("/api/categories", {
+          cancelToken: source.token,
+        });
         setCategories(response.data);
       } catch (err) {
         console.log(err.message);
@@ -21,7 +26,7 @@ const CategoryListPage = () => {
     };
     fetchCategories();
 
-    return () => setIsLoading(false);
+    return () => source.cancel();
   }, []);
 
   return (

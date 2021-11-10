@@ -6,6 +6,9 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import EmptyState from "../../../utils/EmptyState";
 import Alert from "../../../utils/alerts/Alert";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const CreateItemPage = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +18,9 @@ const CreateItemPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("/api/categories");
+        const response = await axios.get("/api/categories", {
+          cancelToken: source.token,
+        });
         setCategories(response.data);
       } catch (err) {
         console.log(err.message);
@@ -26,6 +31,7 @@ const CreateItemPage = () => {
     fetchCategories();
 
     return () => {
+      source.cancel();
       setIsAlertShown(false);
     };
   }, []);
@@ -33,7 +39,9 @@ const CreateItemPage = () => {
   const submitHandler = async (item) => {
     setIsLoading(true);
     try {
-      await axios.post("/api/items", item);
+      await axios.post("/api/items", item, {
+        cancelToken: source.token,
+      });
       showSuccessAlert("Successfully created Item!");
     } catch (err) {
       showErrorAlert(err.response.data.message);

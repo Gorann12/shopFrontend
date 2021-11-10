@@ -18,17 +18,12 @@ const ListItem = ({ list, onDelete }) => {
     evt.stopPropagation();
 
     navigate(`/lists/${list._id}/update`, { state: list });
-    // history.push({
-    //   pathname: `/lists/${list._id}/update`,
-    //   state: list,
-    // });
   };
 
   const navigateToListDetailsPage = (evt) => {
     evt.stopPropagation();
 
     navigate(`/lists/${list._id}`);
-    // history.push(`/lists/${list._id}`);
   };
 
   return (

@@ -13,10 +13,6 @@ const ItemListElement = ({ item, onDelete }) => {
 
   const navigateToUpdatePage = () => {
     navigate(`/items/${item._id}/update`, { state: item });
-    // history.push({
-    //   pathname: `/items/${item._id}/update`,
-    //   state: item,
-    // });
   };
 
   return (

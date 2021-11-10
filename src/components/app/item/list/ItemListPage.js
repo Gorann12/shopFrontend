@@ -4,6 +4,9 @@ import FilterHeader from "../../shared/FilterHeader";
 import ItemList from "./ItemList";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const ItemListPage = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +15,9 @@ const ItemListPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get("/api/items");
+        const response = await axios.get("/api/items", {
+          cancelToken: source.token,
+        });
         setItems(response.data);
       } catch (err) {
         console.log(err.message);
@@ -22,9 +27,7 @@ const ItemListPage = () => {
     };
     fetchItems();
 
-    return () => {
-      setItems([]);
-    };
+    return () => source.cancel();
   }, []);
 
   // Go through items and select unique categories
@@ -48,7 +51,7 @@ const ItemListPage = () => {
   const deleteHandler = async (itemId) => {
     setIsLoading(true);
     try {
-      await axios.delete(`/api/items/${itemId}`);
+      await axios.delete(`/api/items/${itemId}`, { cancelToken: source.token });
       setItems((prevState) => prevState.filter((item) => item._id !== itemId));
     } catch (err) {
       console.log(err.response.data.message);

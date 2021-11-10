@@ -6,6 +6,9 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import ItemForm from "../shared/ItemForm";
 import EmptyState from "../../../utils/EmptyState";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const UpdateItemPage = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +19,9 @@ const UpdateItemPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("/api/categories");
+        const response = await axios.get("/api/categories", {
+          cancelToken: source.token,
+        });
         setCategories(response.data);
       } catch (err) {
         console.log(err.message);
@@ -26,15 +31,15 @@ const UpdateItemPage = () => {
     };
     fetchCategories();
 
-    return () => {
-      setCategories([]);
-    };
+    return () => source.cancel();
   }, []);
 
   const updateItem = async (newItem) => {
     try {
       setIsLoading(true);
-      await axios.patch(`/api/items/${item._id}`, newItem);
+      await axios.patch(`/api/items/${item._id}`, newItem, {
+        cancelToken: source.token,
+      });
 
       navigate("/items/");
     } catch (err) {

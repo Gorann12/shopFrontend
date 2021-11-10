@@ -6,6 +6,9 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import EmptyState from "../../../utils/EmptyState";
 import Alert from "../../../utils/alerts/Alert";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const CreateListPage = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +18,9 @@ const CreateListPage = () => {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const response = await axios.get("/api/shops");
+        const response = await axios.get("/api/shops", {
+          cancelToken: source.token,
+        });
         setShops(response.data);
       } catch (err) {
         console.log(err.message);
@@ -26,6 +31,7 @@ const CreateListPage = () => {
     fetchShops();
 
     return () => {
+      source.cancel();
       setIsAlertShown(false);
     };
   }, []);
@@ -33,7 +39,7 @@ const CreateListPage = () => {
   const submitHandler = async (list) => {
     setIsLoading(true);
     try {
-      await axios.post("/api/lists", list);
+      await axios.post("/api/lists", list, { cancelToken: source.token });
       showSuccessAlert("Successfully created list!");
     } catch (err) {
       showErrorAlert(err.response.data.message);

@@ -4,6 +4,9 @@ import LoadingSpinner from "../../../utils/LoadingSpinner";
 import FilterHeader from "../../shared/FilterHeader";
 import List from "./List";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const ListsPage = () => {
   const [lists, setLists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +14,9 @@ const ListsPage = () => {
   useEffect(() => {
     const fetchLists = async () => {
       try {
-        const response = await axios.get("/api/lists");
+        const response = await axios.get("/api/lists", {
+          cancelToken: source.token,
+        });
         setLists(response.data);
       } catch (err) {
         console.log(err.message);
@@ -21,9 +26,7 @@ const ListsPage = () => {
     };
     fetchLists();
 
-    return () => {
-      setLists([]);
-    };
+    return () => source.cancel();
   }, []);
 
   // Go through lists and select unique shops
@@ -48,7 +51,7 @@ const ListsPage = () => {
   const deleteHandler = async (listId) => {
     setIsLoading(true);
     try {
-      await axios.delete(`/api/lists/${listId}`);
+      await axios.delete(`/api/lists/${listId}`, { cancelToken: source.token });
       setLists((prevState) => prevState.filter((list) => list._id !== listId));
     } catch (err) {
       console.log(err.response.data.message);

@@ -5,16 +5,18 @@ import CreateShopForm from "./CreateShopForm";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import Alert from "../../../utils/alerts/Alert";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const CreateShopPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
   const [alert, setAlert] = useState({ message: "", success: false });
 
   // To Prevent Memory Leaks when component unmounts
-  // Alert Component depends on timeout, useEffect return value is used
-  // to prevent timeout from running after component unmounted
   useEffect(() => {
     return () => {
+      source.cancel();
       setIsAlertShown(false);
     };
   }, []);
@@ -22,7 +24,7 @@ const CreateShopPage = () => {
   const submitHandler = async (formValue) => {
     setIsLoading(true);
     try {
-      await axios.post("/api/shops", formValue);
+      await axios.post("/api/shops", formValue, { cancelToken: source.token });
       showSuccessAlert("Shop was successfully created!");
     } catch (err) {
       showErrorAlert(err.response.data.message);

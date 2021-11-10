@@ -5,16 +5,19 @@ import CreateCategoryForm from "./CreateCategoryForm";
 import LoadingSpinner from "../../../utils/LoadingSpinner";
 import Alert from "../../../utils/alerts/Alert";
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 const CreateCategoryPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
   const [alert, setAlert] = useState({ message: "", success: false });
 
-  // To Prevent Memory Leaks when component unmounts
-  // Alert Component depends on timeout and to prevent timeout from running
-  // after component unmounted useEffect return value is used
+  // To Prevent Memory Leaks when component unmounts, unfinished request will be canceled
+  // and alert timeout will be stopped
   useEffect(() => {
     return () => {
+      source.cancel();
       setIsAlertShown(false);
     };
   }, []);
@@ -22,7 +25,9 @@ const CreateCategoryPage = () => {
   const submitHandler = async (formValue) => {
     setIsLoading(true);
     try {
-      await axios.post("/api/categories", formValue);
+      await axios.post("/api/categories", formValue, {
+        cancelToken: source.token,
+      });
       showSuccessAlert("Successfully created category!");
     } catch (err) {
       showErrorAlert(err.response.data.message);
@@ -40,7 +45,7 @@ const CreateCategoryPage = () => {
   };
 
   return (
-    // Loading will start when request is sent and will when server responds
+    // Loading will start when request is sent and it will stop when server responds
     // Alerts will show after server has responded
     // Success alert will show if everything went fine with request and
     // otherwise Error alert will be shown, alert dissappears after 5 seconds

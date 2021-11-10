@@ -8,10 +8,6 @@ const ListDetailsHeader = ({ list }) => {
 
   const navigateToManageItemsPage = () => {
     navigate(`/lists/${list._id}/manage-items`, { state: list });
-    // history.push({
-    //   pathname: `/lists/${list._id}/manage-items`,
-    //   state: list,
-    // });
   };
 
   return (
