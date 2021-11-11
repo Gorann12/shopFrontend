@@ -5,7 +5,7 @@ import axios from "axios";
 import CategoryListPage from "../../../components/app/category/list/CategoryListPage";
 import mockCategories from "../mock-data/mockCategories.json";
 
-jest.mock("axios");
+axios.get = jest.fn();
 
 describe("CategoryListPage", () => {
   it("Should have loading spinner initially", async () => {

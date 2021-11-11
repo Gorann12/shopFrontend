@@ -52,7 +52,7 @@ const UpdateItemPage = () => {
 
       {/* Application will send item data when you click edit button,
           but if user typed url directly and that url wasn't cached
-          location.state will be undefined. Also, if categories array
+          item(location.state) will be undefined. Also, if categories array
           is empty that means there is no items in database.
       */}
       {!isLoading && item && categories.length > 0 && (

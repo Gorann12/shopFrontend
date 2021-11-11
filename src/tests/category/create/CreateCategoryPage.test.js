@@ -4,7 +4,8 @@ import axios from "axios";
 import { act } from "react-dom/test-utils";
 import CreateCategoryPage from "../../../components/app/category/create/CreateCategoryPage";
 
-jest.mock("axios");
+axios.post = jest.fn();
+axios.get = jest.fn();
 
 const mockCategory = { name: "Category 1", description: "Empty description" };
 
@@ -16,9 +17,9 @@ describe("CreateCategoryPage", () => {
 
     expect(alert).not.toBeInTheDocument();
   });
-  it("Should show success alert is submitted", async () => {
+  it("Should show success alert when form is submitted", async () => {
     const promise = Promise.resolve(mockCategory);
-    axios.post.mockImplementation(() => promise);
+    axios.post.mockImplementationOnce(() => promise);
     render(<CreateCategoryPage />);
 
     const submitButton = screen.queryByRole("button");
