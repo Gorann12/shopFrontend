@@ -13,10 +13,7 @@ const CreateShopPage = () => {
 
   // To Prevent Memory Leaks when component unmounts
   useEffect(() => {
-    return () => {
-      source.cancel();
-      setIsAlertShown(false);
-    };
+    return () => source.cancel();
   }, []);
 
   const submitHandler = async (formValue) => {
@@ -45,7 +42,7 @@ const CreateShopPage = () => {
         <Alert
           message={alert.message}
           success={alert.success}
-          onDissapear={() => setIsAlertShown(false)}
+          onTimeout={() => setIsAlertShown(false)}
         />
       )}
 

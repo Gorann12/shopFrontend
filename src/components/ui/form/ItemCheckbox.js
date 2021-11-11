@@ -3,7 +3,7 @@ import "./ItemCheckbox.css";
 
 const ItemCheckbox = ({
   checked = false,
-  onChange,
+  onChange = () => {},
   item = { name: "", _id: "" },
 }) => {
   const [isChecked, setIsChecked] = useState(checked);

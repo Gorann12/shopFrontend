@@ -1,6 +1,12 @@
 import "./Flex.css";
 
-const Flex = ({ children, alignItems, justifyContent, separate, gap }) => {
+const Flex = ({
+  children,
+  alignItems = "",
+  justifyContent = "",
+  separate = false,
+  gap = false,
+}) => {
   return (
     <div
       className={`flex ${alignItems} ${justifyContent} ${

@@ -1,7 +1,7 @@
 import { FaTrash } from "react-icons/fa";
 import "./IconButton.css";
 
-const DeleteIconButton = ({ onClick }) => {
+const DeleteIconButton = ({ onClick = () => {} }) => {
   return (
     <button
       onClick={onClick}

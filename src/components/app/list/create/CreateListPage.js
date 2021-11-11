@@ -28,10 +28,7 @@ const CreateListPage = () => {
     };
     fetchShops();
 
-    return () => {
-      source.cancel();
-      setIsAlertShown(false);
-    };
+    return () => source.cancel();
   }, []);
 
   const submitHandler = async (list) => {
@@ -60,7 +57,7 @@ const CreateListPage = () => {
         <Alert
           message={alert.message}
           success={alert.success}
-          onDissapear={() => setIsAlertShown(false)}
+          onTimeout={() => setIsAlertShown(false)}
         />
       )}
       <CreateListHeader />

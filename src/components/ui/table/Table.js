@@ -1,6 +1,6 @@
 import "./Table.css";
 
-const Table = ({ children, separate }) => {
+const Table = ({ children, separate = false }) => {
   return (
     <table
       data-testid="table"

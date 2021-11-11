@@ -12,12 +12,8 @@ const CreateCategoryPage = () => {
   const source = axios.CancelToken.source();
 
   // To Prevent Memory Leaks when component unmounts, unfinished request will be canceled
-  // and alert timeout will be stopped
   useEffect(() => {
-    return () => {
-      source.cancel();
-      setIsAlertShown(false);
-    };
+    return () => source.cancel();
   }, []);
 
   const submitHandler = async (formValue) => {
@@ -43,16 +39,12 @@ const CreateCategoryPage = () => {
   };
 
   return (
-    // Loading will start when request is sent and it will stop when server responds
-    // Alerts will show after server has responded
-    // Success alert will show if everything went fine with request and
-    // otherwise Error alert will be shown, alert dissappears after 5 seconds
     <>
       {isAlertShown && (
         <Alert
           message={alert.message}
           success={alert.success}
-          onDissapear={() => setIsAlertShown(false)}
+          onTimeout={() => setIsAlertShown(false)}
         />
       )}
       <CreateCategoryHeader />

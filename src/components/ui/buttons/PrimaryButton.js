@@ -3,8 +3,8 @@ import "./PrimaryButton.css";
 const PrimaryButton = ({
   children,
   onClick = () => {},
-  position,
-  separate,
+  position = "left",
+  separate = false,
 }) => {
   return (
     <button
