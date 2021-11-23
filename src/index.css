@@ -123,3 +123,9 @@ button {
   border: none;
   background: none;
 }
+
+p {
+  font-size: var(--font-sz-300);
+  color: var(--clr-primary-700);
+  margin-bottom: var(--spacing-100);
+}

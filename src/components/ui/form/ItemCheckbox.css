@@ -13,7 +13,7 @@
 
 .item-checkbox label {
   display: block;
-  padding: var(--spacing-500) var(--spacing-300) var(--spacing-300)
+  padding: var(--spacing-600) var(--spacing-300) var(--spacing-300)
     var(--spacing-300);
 }
 
@@ -43,4 +43,5 @@
 
 .item-checkbox__description {
   color: var(--clr-grey-600);
+  font-size: var(--font-sz-300);
 }

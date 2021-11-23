@@ -53,7 +53,8 @@ const ListsPage = () => {
       await axios.delete(`/api/lists/${listId}`, { cancelToken: source.token });
       setLists((prevState) => prevState.filter((list) => list._id !== listId));
     } catch (err) {
-      console.log(err.response.data.message);
+      console.log(err);
+      console.log(err.response?.data.message);
     } finally {
       setIsLoading(false);
     }

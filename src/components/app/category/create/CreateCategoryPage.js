@@ -24,7 +24,8 @@ const CreateCategoryPage = () => {
       });
       showSuccessAlert("Successfully created category!");
     } catch (err) {
-      showErrorAlert(err.response.data.message);
+      console.log(err);
+      showErrorAlert(err.response?.data.message);
     }
     setIsLoading(false);
     setIsAlertShown(true);

@@ -15,6 +15,7 @@ const UpdateItemPage = () => {
   const source = axios.CancelToken.source();
 
   useEffect(() => {
+    console.log("Built");
     const fetchCategories = async () => {
       try {
         const response = await axios.get("/api/categories", {
@@ -41,7 +42,8 @@ const UpdateItemPage = () => {
 
       navigate("/items/");
     } catch (err) {
-      alert(err.response.data.message);
+      console.log(err);
+      alert(err.response?.data.message);
     }
   };
 

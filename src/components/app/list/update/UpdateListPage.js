@@ -41,8 +41,9 @@ const UpdateListPage = () => {
       });
       navigate("/lists/");
     } catch (err) {
+      console.log(err);
       setIsLoading(false);
-      alert(err.response.data.message);
+      alert(err.response?.data.message);
     }
   };
 

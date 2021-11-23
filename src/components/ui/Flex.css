@@ -16,6 +16,7 @@
 
 .flex-separate {
   margin-top: var(--spacing-500);
+  margin-bottom: var(--spacing-400);
 }
 
 .flex-gap-small {

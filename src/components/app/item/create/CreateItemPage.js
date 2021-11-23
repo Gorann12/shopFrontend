@@ -39,7 +39,8 @@ const CreateItemPage = () => {
       });
       showSuccessAlert("Successfully created Item!");
     } catch (err) {
-      showErrorAlert(err.response.data.message);
+      console.log(err);
+      showErrorAlert(err.response?.data.message);
     }
     setIsLoading(false);
     setIsAlertShown(true);

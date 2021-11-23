@@ -17,7 +17,7 @@ const ItemForm = ({
 
   const submitHandler = (evt) => {
     evt.preventDefault();
-    onSubmit({ name, category, quantity });
+    onSubmit({ name, category, quantity: parseInt(quantity) });
   };
 
   return (

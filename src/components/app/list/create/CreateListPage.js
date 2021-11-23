@@ -34,10 +34,13 @@ const CreateListPage = () => {
   const submitHandler = async (list) => {
     setIsLoading(true);
     try {
-      await axios.post("/api/lists", list, { cancelToken: source.token });
+      await axios.post("/api/lists", list, {
+        cancelToken: source.token,
+      });
       showSuccessAlert("Successfully created list!");
     } catch (err) {
-      showErrorAlert(err.response.data.message);
+      console.log(err);
+      showErrorAlert(err.response?.data.message);
     }
     setIsLoading(false);
     setIsAlertShown(true);

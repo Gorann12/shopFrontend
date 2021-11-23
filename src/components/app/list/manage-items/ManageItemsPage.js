@@ -27,7 +27,8 @@ const ManageItemsPage = () => {
         });
         setItems(response.data);
       } catch (err) {
-        alert(err.response.data.message);
+        console.log(err);
+        alert(err.response?.data.message);
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +47,8 @@ const ManageItemsPage = () => {
       });
       navigate(`/lists/${list._id}`);
     } catch (err) {
-      alert(err.response.data.message);
+      console.log(err);
+      alert(err.response?.data.message);
       setIsLoading(false);
     }
   };

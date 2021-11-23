@@ -19,10 +19,13 @@ const CreateShopPage = () => {
   const submitHandler = async (formValue) => {
     setIsLoading(true);
     try {
-      await axios.post("/api/shops", formValue, { cancelToken: source.token });
+      await axios.post("/api/shops", formValue, {
+        cancelToken: source.token,
+      });
       showSuccessAlert("Shop was successfully created!");
     } catch (err) {
-      showErrorAlert(err.response.data.message);
+      console.log(err);
+      showErrorAlert(err.response?.data.message);
     }
     setIsLoading(false);
     setIsAlertShown(true);

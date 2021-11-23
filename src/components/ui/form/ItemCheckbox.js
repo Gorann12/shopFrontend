@@ -4,7 +4,7 @@ import "./ItemCheckbox.css";
 const ItemCheckbox = ({
   checked = false,
   onChange = () => {},
-  item = { name: "", _id: "" },
+  item = { name: "", _id: "", category: { name: "" } },
 }) => {
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -30,6 +30,8 @@ const ItemCheckbox = ({
         />
         <span className="item-checkbox__fake"></span>
         <span className="item-checkbox__heading">{item.name}</span>
+        <br />
+        <span className="item-checkbox__description">{item.category.name}</span>
       </label>
     </div>
   );

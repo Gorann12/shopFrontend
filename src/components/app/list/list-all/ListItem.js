@@ -31,7 +31,7 @@ const ListItem = ({ list, onDelete }) => {
       <td>
         <span>{list.name}</span>
         <br />
-        <Flag>{list.items.length} items</Flag>
+        {/* <Flag>{list.items.length} items</Flag> */}
       </td>
       <td>{list.shop.name}</td>
       <td>
